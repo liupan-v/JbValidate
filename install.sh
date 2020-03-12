@@ -1,6 +1,4 @@
 #!/bin/bash
-#URL: https://github.com/yushangcl/JetbrainsServer
-#E-mail: gayhub@live.cn
 clear
 echo "    ################################################"
 echo "    #                                              #"
@@ -28,22 +26,22 @@ else
   arch=32
 fi
 #Build Jetbrains Server
-git clone https://github.com/yushangcl/JetbrainsServer
+git clone https://github.com/liupan-v/JbValidate
 if cat /etc/*-release | grep -Eqi "raspbian"; then
-  mv JetbrainsServer/binaries/IntelliJIDEALicenseServer_linux_arm jetbrains
+  mv JbValidate/binaries/IntelliJIDEALicenseServer_linux_arm jetbrains
 else
   if [ "$arch" -eq 32 ]; then
-    mv JetbrainsServer/binaries/IntelliJIDEALicenseServer_linux_i386 jetbrains
+    mv JbValidate/binaries/IntelliJIDEALicenseServer_linux_i386 jetbrains
   else
-    mv JetbrainsServer/binaries/IntelliJIDEALicenseServer_linux_amd64 jetbrains
+    mv JbValidate/binaries/IntelliJIDEALicenseServer_linux_amd64 jetbrains
   fi
 fi
 mv jetbrains /usr/bin/
 chmod +x /usr/bin/jetbrains
-nohup jetbrains -p 1017 -u Bat.IT > /home/jetbrains.log 2>&1 &
+nohup jetbrains -p 2077 -u Bat.IT > /home/jetbrains.log 2>&1 &
 echo -ne '\n@reboot root nohup jetbrains > /home/jetbrains.log 2>&1 &\n\n' >>/etc/crontab
 #Cleaning Work
-rm -rf JetbrainsServer
+rm -rf JbValidate
 #Check jetbrains server status
 sleep 1
 echo "Check Jetbrains Server status..."
