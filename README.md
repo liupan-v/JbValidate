@@ -1,8 +1,3 @@
-# JetBrains Server
-
-`version 0.1.1`
-`20180504`
-
 It is a Shell Script which can build a JetBrains Server automatically.
 
 ---
